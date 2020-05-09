@@ -1,13 +1,12 @@
-'use strict';
-const path = require('path');
-const {app, BrowserWindow, Menu} = require('electron');
-/// const {autoUpdater} = require('electron-updater');
-const {is} = require('electron-util');
-const unhandled = require('electron-unhandled');
-const debug = require('electron-debug');
-const contextMenu = require('electron-context-menu');
-const config = require('./config');
-const menu = require('./menu');
+import * as path from 'path';
+import { app, BrowserWindow, Menu } from 'electron';
+/// const {autoUpdater} from 'electron-updater');
+import { is } from 'electron-util';
+import * as unhandled from 'electron-unhandled';
+import * as debug from 'electron-debug';
+import * as contextMenu from 'electron-context-menu';
+import config from './config';
+import menu from './menu';
 
 unhandled();
 debug();
@@ -28,14 +27,14 @@ app.setAppUserModelId('com.company.AppName');
 // }
 
 // Prevent window from being garbage collected
-let mainWindow;
+let mainWindow: BrowserWindow | null = null;
 
 const createMainWindow = async () => {
 	const win = new BrowserWindow({
 		title: app.name,
 		show: false,
 		width: 600,
-		height: 400
+		height: 400,
 	});
 
 	win.on('ready-to-show', () => {
@@ -45,10 +44,10 @@ const createMainWindow = async () => {
 	win.on('closed', () => {
 		// Dereference the window
 		// For multiple windows store them in an array
-		mainWindow = undefined;
+		mainWindow = null;
 	});
 
-	await win.loadFile(path.join(__dirname, 'index.html'));
+	await win.loadFile(path.join(__dirname, '../template/main.html'));
 
 	return win;
 };
@@ -86,5 +85,7 @@ app.on('activate', async () => {
 	mainWindow = await createMainWindow();
 
 	const favoriteAnimal = config.get('favoriteAnimal');
-	mainWindow.webContents.executeJavaScript(`document.querySelector('header p').textContent = 'Your favorite animal is ${favoriteAnimal}'`);
+	mainWindow.webContents.executeJavaScript(
+		`document.querySelector('header p').textContent = 'Your favorite animal is ${favoriteAnimal}'`,
+	);
 })();

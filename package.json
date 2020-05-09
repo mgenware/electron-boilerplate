@@ -8,12 +8,15 @@
 	"author": "Mgen",
 	"scripts": {
 		"postinstall": "electron-builder install-app-deps",
-		"lint": "xo",
-		"test": "npm run lint",
-		"start": "electron .",
+		"test": "yarn lint",
+		"dev": "yarn dev-build && electron ./dist/main.js && yarn watch-build",
 		"pack": "electron-builder --dir",
 		"dist": "electron-builder --macos --linux --windows",
-		"release": "np"
+		"release": "np",
+		"lint": "eslint --max-warnings 0 --ext .ts src/ tests/",
+		"clean": "del-cli dist && del-cli dist_tests",
+		"dev-build": "yarn run clean && tsc -b src",
+		"watch-build": "tsc -b src -w"
 	},
 	"dependencies": {
 		"electron-context-menu": "^2.0.0",
@@ -24,9 +27,12 @@
 		"electron-util": "^0.14.1"
 	},
 	"devDependencies": {
+		"@types/node": "^12",
+		"del-cli": "^3.0.0",
 		"electron": "^7.1.1",
 		"electron-builder": "^21.2.0",
 		"np": "^5.0.3",
+		"typescript": "^3.8.3",
 		"xo": "^0.25.3"
 	},
 	"xo": {
