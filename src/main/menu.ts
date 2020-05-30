@@ -65,7 +65,7 @@ const debugSubmenu = [
   {
     label: 'Show App Data',
     click() {
-      shell.openItem(app.getPath('userData'));
+      shell.openPath(app.getPath('userData'));
     },
   },
   {

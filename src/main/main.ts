@@ -1,12 +1,13 @@
-import * as path from 'path';
+// import * as url from 'url';
+// import { promises as fs } from 'fs';
 import { app, BrowserWindow, Menu } from 'electron';
 /// const {autoUpdater} from 'electron-updater');
 import { is } from 'electron-util';
-import * as unhandled from 'electron-unhandled';
-import * as debug from 'electron-debug';
+import unhandled from 'electron-unhandled';
+import debug from 'electron-debug';
 import * as contextMenu from 'electron-context-menu';
-import config from './config';
 import menu from './menu';
+import init from './init';
 
 unhandled();
 debug();
@@ -35,6 +36,9 @@ const createMainWindow = async () => {
     show: false,
     width: 600,
     height: 400,
+    webPreferences: {
+      preload: 'preload.js',
+    },
   });
 
   win.on('ready-to-show', () => {
@@ -46,8 +50,7 @@ const createMainWindow = async () => {
     // For multiple windows store them in an array
     mainWindow = null;
   });
-
-  await win.loadFile(path.join(__dirname, '../template/main.html'));
+  await win.loadFile('main.html');
 
   return win;
 };
@@ -84,8 +87,5 @@ app.on('activate', async () => {
   Menu.setApplicationMenu(menu);
   mainWindow = await createMainWindow();
 
-  const favoriteAnimal = config.get('favoriteAnimal');
-  mainWindow.webContents.executeJavaScript(
-    `document.querySelector('header p').textContent = 'Your favorite animal is ${favoriteAnimal}'`,
-  );
+  init();
 })();

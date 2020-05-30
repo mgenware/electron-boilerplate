@@ -7,33 +7,36 @@
   "repository": "github.com/mgenware/electron-boilerplate",
   "author": "Mgen",
   "scripts": {
-    "postinstall": "electron-builder install-app-deps",
-    "test": "yarn lint",
-    "dev": "yarn dev-build && electron ./dist/main.js && yarn watch-build",
-    "pack": "electron-builder --dir",
-    "dist": "electron-builder --macos --linux --windows",
-    "lint": "eslint --max-warnings 0 --ext .ts src/ tests/",
-    "clean": "del-cli dist && del-cli dist_tests",
-    "dev-build": "yarn run clean && tsc -b src",
-    "watch-build": "tsc -b src -w"
+    "r": "daizong",
+    "postinstall": "electron-builder install-app-deps"
   },
   "dependencies": {
+    "electron-better-ipc": "^1.0.1",
     "electron-context-menu": "^2.0.1",
-    "electron-debug": "^3.0.0",
+    "electron-debug": "^3.1.0",
     "electron-store": "^5.1.0",
     "electron-unhandled": "^3.0.0",
     "electron-updater": "^4.0.6",
-    "electron-util": "^0.14.1"
+    "electron-util": "^0.14.1",
+    "lit-element": "^2.3.1",
+    "modern-normalize": "^0.6.0"
   },
   "devDependencies": {
-    "@types/node": "^14.0.1",
-    "@typescript-eslint/eslint-plugin": "^2.33.0",
-    "@typescript-eslint/parser": "^2.33.0",
-    "del-cli": "^3.0.0",
-    "electron": "^8.2.5",
-    "electron-builder": "^22.6.0",
-    "eslint": "^7.0.0",
-    "typescript": "^3.8.3"
+    "@rollup/plugin-commonjs": "^12.0.0",
+    "@rollup/plugin-json": "^4.0.3",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "@rollup/plugin-typescript": "^4.1.2",
+    "@types/node": "^12",
+    "copyfiles": "^2.3.0",
+    "daizong": "^0.4.0",
+    "electron": "^9.0.0",
+    "electron-builder": "^22.7.0",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.11.2",
+    "rollup-plugin-lit-css-ex": "^2.0.0",
+    "rollup-plugin-terser": "^6.1.0",
+    "tslib": "^2.0.0",
+    "typescript": "^3.9.3"
   },
   "build": {
     "appId": "com.company.AppName",

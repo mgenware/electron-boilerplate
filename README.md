@@ -6,6 +6,7 @@ See [awesome-electron](https://github.com/sindresorhus/awesome-electron) for mor
 
 See [Caprine](https://github.com/sindresorhus/caprine) for a production app based on this boilerplate.
 
+
 ## Features
 
 - [`electron-builder`](https://www.electron.build) fully set up to create cross-platform builds
@@ -17,6 +18,7 @@ See [Caprine](https://github.com/sindresorhus/caprine) for a production app base
 - [User-friendly handling of unhandled errors](https://github.com/sindresorhus/electron-unhandled)
 - Easily publish new versions to GitHub Releases
 - And much more!
+
 
 ## Getting started
 
@@ -30,19 +32,22 @@ $ curl -fsSL https://github.com/sindresorhus/electron-boilerplate/archive/master
 
 There's also a [Yeoman generator](https://github.com/sindresorhus/generator-electron).
 
+
 ---
 
 **Remove everything from here and above**
 
 ---
 
+
 # App Name
 
 > The best app ever
 
+
 ## Install
 
-_macOS 10.10+, Linux, and Windows 7+ are supported (64-bit only)._
+*macOS 10.10+, Linux, and Windows 7+ are supported (64-bit only).*
 
 **macOS**
 
@@ -52,13 +57,15 @@ _macOS 10.10+, Linux, and Windows 7+ are supported (64-bit only)._
 
 [**Download**](https://github.com/user/repo/releases/latest) the `.AppImage` or `.deb` file.
 
-_The AppImage needs to be [made executable](http://discourse.appimage.org/t/how-to-make-an-appimage-executable/80) after download._
+*The AppImage needs to be [made executable](http://discourse.appimage.org/t/how-to-make-an-appimage-executable/80) after download.*
 
 **Windows**
 
 [**Download**](https://github.com/user/repo/releases/latest) the `.exe` file.
 
+
 ---
+
 
 ## Dev
 
