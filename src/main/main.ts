@@ -1,7 +1,4 @@
-// import * as url from 'url';
-// import { promises as fs } from 'fs';
 import { app, BrowserWindow, Menu } from 'electron';
-/// const {autoUpdater} from 'electron-updater');
 import { is } from 'electron-util';
 import unhandled from 'electron-unhandled';
 import debug from 'electron-debug';
