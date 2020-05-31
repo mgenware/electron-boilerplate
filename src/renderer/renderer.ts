@@ -1,4 +1,5 @@
 import './helloView';
+import handleDrop from './handleDrop';
 
 function ready(fn: () => void) {
   if (document.readyState != 'loading') {
@@ -9,5 +10,5 @@ function ready(fn: () => void) {
 }
 
 ready(() => {
-  console.log('Hello from renderer process');
+  handleDrop(document.body);
 });

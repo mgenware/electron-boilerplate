@@ -3,6 +3,7 @@ import { is } from 'electron-util';
 import unhandled from 'electron-unhandled';
 import debug from 'electron-debug';
 import * as contextMenu from 'electron-context-menu';
+import { join } from 'path';
 import menu from './menu';
 import init from './init';
 
@@ -34,7 +35,7 @@ const createMainWindow = async () => {
     width: 600,
     height: 400,
     webPreferences: {
-      preload: 'preload.js',
+      preload: join(__dirname, '../dist/preload.js'),
     },
   });
 

@@ -1,7 +1,7 @@
-import * as electron from 'electron';
+import { RendererProcessIpc } from 'electron-better-ipc';
 
 declare global {
   interface Window {
-    ipcRenderer: electron.IpcRenderer;
+    ipcRenderer: RendererProcessIpc;
   }
 }
