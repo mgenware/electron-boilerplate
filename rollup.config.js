@@ -33,6 +33,9 @@ function buildConfig(inputName, format) {
       sourcemap: true,
     },
     plugins,
+    watch: {
+      include: './src/**/*.*',
+    },
   };
 }
 
