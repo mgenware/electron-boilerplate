@@ -6,7 +6,7 @@ Fork of [electron-boilerplate](https://github.com/sindresorhus/electron-boilerpl
 - [rollup](https://github.com/rollup/rollup) to bundle dist files
 - [eslint-typescript](https://github.com/typescript-eslint/typescript-eslint) to lint files
 - Added lit-element
-- Migrate scripts to [daizong](https://github.com/mgenware/daizong)
+- Migrated `package.json` scripts to [daizong](https://github.com/mgenware/daizong)
 
 ### Usage
 
