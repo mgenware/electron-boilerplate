@@ -172,7 +172,9 @@ if (is.development) {
   template.push({
     label: 'Debug',
     submenu: debugSubmenu,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } as any);
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default Menu.buildFromTemplate(template as any);
