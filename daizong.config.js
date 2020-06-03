@@ -8,12 +8,12 @@ module.exports = {
         run: 'rimraf dist dist_tests',
       },
       compile: {
-        run: ['tsc --project tsconfig-main.json --incremental', 'rollup -c'],
+        run: ['tsc -b tests', 'rollup -c'],
       },
       runAndWarch: {
         run: [
           'electron ./dist/main/main.js',
-          'tsc --project tsconfig-main.json --incremental --watch',
+          'tsc -b tests -w',
           'rollup -c -w',
         ],
         parallel: true,
@@ -34,5 +34,8 @@ module.exports = {
   },
   dist: {
     run: 'electron-builder --macos --linux --windows',
+  },
+  t: {
+    run: 'mocha --require source-map-support/register dist_tests/**/*.test.js',
   },
 };

@@ -4,6 +4,7 @@ Fork of [electron-boilerplate](https://github.com/sindresorhus/electron-boilerpl
 
 - Rewritten in TypeScript
 - Bundles and compiles renderer process code with [rollup](https://github.com/rollup/rollup)
+- Compiles main process code and test project with TypeScript project references
 - Lints files with [eslint-typescript](https://github.com/typescript-eslint/typescript-eslint)
 - Watches source files in dev mode and auto reloads electron
 - Added lit-element
@@ -11,10 +12,18 @@ Fork of [electron-boilerplate](https://github.com/sindresorhus/electron-boilerpl
 
 ### Usage
 
-Start dev build and watch files:
+> This project uses [daizong](https://github.com/mgenware/daizong) to manage scripts. You need to run scripts through daizong via `yarn r <script>` or `npm run r <script>`.
+
+Start dev build, watch files and run electron:
 
 ```sh
 yarn r dev
+```
+
+Run tests in dev mode:
+
+```sh
+yarn r t
 ```
 
 Lint files:

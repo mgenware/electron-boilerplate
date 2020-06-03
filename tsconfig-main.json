@@ -10,11 +10,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "newLine": "lf",
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "tsBuildInfoFile": "./dist/tmp/main-build.tsbuildinfo",
     "esModuleInterop": true
-  },
-  "include": ["src/main/**/*", "src/common/**/*"],
-  "exclude": ["node_modules"]
+  }
 }
