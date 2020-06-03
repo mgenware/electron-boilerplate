@@ -37,6 +37,7 @@ const createMainWindow = async () => {
     height: 400,
     webPreferences: {
       preload: join(rootDir, 'template/preload.js'),
+      enableRemoteModule: true,
     },
   });
 
