@@ -11,6 +11,12 @@ unhandled();
 debug();
 contextMenu();
 
+try {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires, global-require, import/no-extraneous-dependencies
+  require('electron-reloader')(module);
+  // eslint-disable-next-line no-empty
+} catch (_) {}
+
 // Note: Must match `build.appId` in package.json
 app.setAppUserModelId('com.company.AppName');
 

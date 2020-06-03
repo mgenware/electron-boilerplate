@@ -30,6 +30,7 @@ module.exports = {
     'object-curly-newline': 'off',
     // End of prettier-related rules.
     'class-methods-use-this': 'off',
+    'max-len': 'off',
     'import/prefer-default-export': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
