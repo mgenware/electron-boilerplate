@@ -7,36 +7,30 @@ import litcss from 'rollup-plugin-lit-css-ex';
 
 const isProd = process.env.NODE_ENV == 'production';
 
-function buildConfig(inputName, format) {
-  const isCjs = format === 'cjs';
-  const plugins = [json(), typescript()];
-  if (!isCjs) {
-    plugins.push(
-      nodeResolve({
-        browser: true,
-        extensions: ['.js', '.json', '.css'],
-      }),
-      commonjs(),
-      litcss(),
-    );
-  }
+const plugins = [
+  nodeResolve({
+    browser: true,
+    extensions: ['.js', '.json', '.css'],
+  }),
+  commonjs(),
+  json(),
+  typescript({ tsconfig: './tsconfig-renderer.json' }),
+  litcss(),
+];
 
-  if (isProd) {
-    plugins.push(terser());
-  }
-
-  return {
-    input: [`src/${inputName}/${inputName}.ts`],
-    output: {
-      dir: 'dist',
-      format,
-      sourcemap: true,
-    },
-    plugins,
-    watch: {
-      include: './src/**/*.*',
-    },
-  };
+if (isProd) {
+  plugins.push(terser());
 }
 
-export default [buildConfig('main', 'cjs'), buildConfig('renderer', 'iife')];
+export default {
+  input: ['src/renderer/renderer.ts'],
+  output: {
+    dir: 'dist',
+    format: 'iife',
+    sourcemap: true,
+  },
+  plugins,
+  watch: {
+    include: './src/**/*.*',
+  },
+};

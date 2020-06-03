@@ -30,7 +30,6 @@
     "@types/node": "^12",
     "@typescript-eslint/eslint-plugin": "^3.0.2",
     "@typescript-eslint/parser": "^3.0.2",
-    "copyfiles": "^2.3.0",
     "daizong": "^0.4.0",
     "electron-builder": "^22.7.0",
     "eslint": "^7.1.0",

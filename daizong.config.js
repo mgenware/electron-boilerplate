@@ -2,16 +2,20 @@ module.exports = {
   _: {
     privateTasks: {
       prepare: {
-        run: ['#clean', '#copyTemplate'],
-      },
-      copyTemplate: {
-        run: 'copyfiles -f "./template/*.*" dist',
+        run: ['#clean'],
       },
       clean: {
         run: 'rimraf dist dist_tests',
       },
-      runAndWatch: {
-        run: ['electron ./dist/main.js', 'rollup -c -w'],
+      compile: {
+        run: ['tsc --project tsconfig-main.json --incremental', 'rollup -c'],
+      },
+      runAndWarch: {
+        run: [
+          'electron ./dist/main/main.js',
+          'tsc --project tsconfig-main.json --incremental --watch',
+          'rollup -c -w',
+        ],
         parallel: true,
       },
     },
@@ -20,7 +24,7 @@ module.exports = {
     run: 'eslint --max-warnings 0 --ext .ts src',
   },
   dev: {
-    run: ['#prepare', 'rollup -c', '#runAndWatch'],
+    run: ['#prepare', '#compile', '#runAndWarch'],
     env: {
       NODE_ENV: 'development',
     },

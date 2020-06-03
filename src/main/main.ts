@@ -2,7 +2,7 @@ import { app, BrowserWindow, Menu } from 'electron';
 import { is } from 'electron-util';
 import unhandled from 'electron-unhandled';
 import debug from 'electron-debug';
-import * as contextMenu from 'electron-context-menu';
+import contextMenu from 'electron-context-menu';
 import { join } from 'path';
 import menu from './menu';
 import init from './init';
@@ -27,6 +27,7 @@ app.setAppUserModelId('com.company.AppName');
 
 // Prevent window from being garbage collected
 let mainWindow: BrowserWindow | null = null;
+const rootDir = join(__dirname, '../../');
 
 const createMainWindow = async () => {
   const win = new BrowserWindow({
@@ -35,7 +36,7 @@ const createMainWindow = async () => {
     width: 600,
     height: 400,
     webPreferences: {
-      preload: join(__dirname, '../dist/preload.js'),
+      preload: join(rootDir, 'template/preload.js'),
     },
   });
 
@@ -48,7 +49,7 @@ const createMainWindow = async () => {
     // For multiple windows store them in an array
     mainWindow = null;
   });
-  await win.loadFile('main.html');
+  await win.loadFile(join(rootDir, 'template/main.html'));
 
   return win;
 };

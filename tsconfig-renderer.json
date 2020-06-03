@@ -16,6 +16,6 @@
     "baseUrl": "src",
     "newLine": "lf"
   },
-  "include": ["src/**/*", "tests"],
+  "include": ["src/renderer/**/*", "src/common/**/*"],
   "exclude": ["node_modules"]
 }
