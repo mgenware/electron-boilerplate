@@ -23,7 +23,7 @@ module.exports = {
     },
   },
   lint: {
-    run: 'eslint --max-warnings 0 --ext .ts src',
+    run: 'eslint --max-warnings 0 --ext .ts src tests',
   },
   dev: {
     run: ['#prepare', '#compile', '#runAndWarch'],
