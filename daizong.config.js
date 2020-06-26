@@ -5,7 +5,9 @@ module.exports = {
         run: ['#clean'],
       },
       clean: {
-        run: 'rimraf dist dist_tests',
+        run: {
+          del: 'dist dist_tests',
+        },
       },
       compile: {
         run: ['tsc -b tests', 'rollup -c'],
