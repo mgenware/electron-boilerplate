@@ -40,4 +40,7 @@ module.exports = {
   t: {
     run: 'mocha --require source-map-support/register dist_tests/**/*.test.js',
   },
+  test: {
+    run: ['#prepare', '#compile', '#lint', '#t'],
+  },
 };

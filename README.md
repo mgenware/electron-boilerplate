@@ -20,6 +20,12 @@ Start dev build, watch files and run electron:
 yarn r dev
 ```
 
+Compile, lint files and run tests:
+
+```sh
+yarn r test
+```
+
 Run tests in dev mode:
 
 ```sh
