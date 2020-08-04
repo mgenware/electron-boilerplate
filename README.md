@@ -23,10 +23,10 @@ yarn r dev
 Compile, lint files and run tests:
 
 ```sh
-yarn r test
+yarn r build
 ```
 
-Run tests in dev mode:
+Run tests during development (when `yarn r dev` is running):
 
 ```sh
 yarn r t
