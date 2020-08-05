@@ -13,7 +13,7 @@ module.exports = {
       compile: {
         run: ['tsc -b tests', 'rollup -c'],
       },
-      runAndWarch: {
+      runAndWatch: {
         run: [
           'electron ./dist/main/main.js',
           'tsc -b tests -w',
@@ -25,7 +25,7 @@ module.exports = {
   },
   // Starts the development mode, which watches and compiles all source files including tests files.
   dev: {
-    run: ['#prepare', '#compile', '#runAndWarch'],
+    run: ['#prepare', '#compile', '#runAndWatch'],
     env: {
       NODE_ENV: 'development',
     },
