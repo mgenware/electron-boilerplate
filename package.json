@@ -2,9 +2,9 @@
   "name": "app-name",
   "productName": "App Name",
   "version": "0.0.0",
-  "description": "DESC",
+  "description": "__DESCRIPTION__",
   "license": "MIT",
-  "repository": "github.com/mgenware/electron-boilerplate",
+  "repository": "github.com/mgenware/fx94",
   "author": "Mgen",
   "scripts": {
     "r": "daizong",
