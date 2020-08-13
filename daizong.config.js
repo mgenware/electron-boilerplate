@@ -15,7 +15,7 @@ module.exports = {
       },
       runAndWatch: {
         run: [
-          'electron ./dist/main/main.js',
+          'electron ./ts_out/main/main.js',
           'tsc -b tests -w',
           'rollup -c -w',
         ],
@@ -33,7 +33,7 @@ module.exports = {
   // Runs tests in development mode. You can keep two terminal tabs during development, one for `yarn dev`, the other for `yarn r t`.
   t: {
     run:
-      'mocha --exit --require source-map-support/register dist_tests/**/*.test.js',
+      'mocha --exit --require source-map-support/register ts_tests_out/**/*.test.js',
   },
   // Cleans, lints, compiles sources and runs tests.
   build: {

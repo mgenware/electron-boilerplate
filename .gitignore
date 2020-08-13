@@ -1,3 +1,4 @@
 node_modules
 /dist
-/dist_tests
+/ts_out
+/ts_tests_out
