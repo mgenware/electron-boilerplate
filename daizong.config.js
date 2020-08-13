@@ -7,7 +7,7 @@ module.exports = {
       // Deletes compiled files, auto triggered by `yarn r dev` or `yarn r build`.
       clean: {
         run: {
-          del: ['dist', 'dist_tests'],
+          del: ['ts_out', 'ts_tests_out', 'dist'],
         },
       },
       compile: {
