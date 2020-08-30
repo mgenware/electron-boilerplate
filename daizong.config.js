@@ -54,4 +54,8 @@ module.exports = {
   dist: {
     run: ['electron-builder --macos --linux --windows'],
   },
+  'build-all': {
+    alias: 'ba',
+    run: ['#build', '#dist', '#pack'],
+  },
 };

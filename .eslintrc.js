@@ -36,5 +36,6 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     '@typescript-eslint/switch-exhaustiveness-check': 'error',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    'import/no-extraneous-dependencies': 'off',
   },
 };
