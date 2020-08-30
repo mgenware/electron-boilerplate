@@ -48,6 +48,11 @@
   },
   "build": {
     "appId": "com.company.AppName",
+    "files": [
+      "package.json",
+      "ts_out/**/*.js",
+      "template/**/*"
+    ],
     "mac": {
       "darkModeSupport": true
     },
