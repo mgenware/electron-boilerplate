@@ -52,11 +52,11 @@ module.exports = {
   },
   // Run build before this.
   dist: {
-    run: ['electron-builder --macos --linux --windows'],
+    run: ['electron-builder --macos --windows'],
   },
-  'build-all': {
-    alias: 'ba',
-    run: ['#build', '#dist', '#pack'],
+  'build-dist': {
+    alias: 'bd',
+    run: ['#build', '#dist'],
   },
   terser: {
     run: ['node ./scripts/terser.js'],
