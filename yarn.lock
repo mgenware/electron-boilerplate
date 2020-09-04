@@ -919,10 +919,10 @@ crypto-random-string@^2.0.0:
   resolved "https://registry.yarnpkg.com/crypto-random-string/-/crypto-random-string-2.0.0.tgz#ef2a7a966ec11083388369baa02ebead229b30d5"
   integrity sha512-v1plID3y9r/lPhviJ1wrXpLeyUIGAZ2SHNYTEapm7/8A9nLPoyvVp3RK/EPFqn5kEznyWgYZNsRtYYIWbuG8KA==
 
-daizong@^0.9.0:
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/daizong/-/daizong-0.9.0.tgz#b97fc3e8790bf1701bf5e9547811ac0779850cbb"
-  integrity sha512-4JjvF1Yry0XXNTf3BraAUcafAc8UVhp4X4iUgu//sEaFzPo5u8tHsklwtupkhPtp/Z5Uqzge2jP/YEoiTCm53g==
+daizong@^0.9.1:
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/daizong/-/daizong-0.9.1.tgz#d27ea07805d3df96a54bec87296af741ae74737c"
+  integrity sha512-ba7ZEtWflT1pv9paZb4WKRMRD0sDKV8mdjMX+b9BCZPJ9dwLhGbo8/owPmh3lGAT/CbWuTElvV6qVLhfhDrr/Q==
   dependencies:
     chalk "^4.1.0"
     cosmiconfig "^7.0.0"
