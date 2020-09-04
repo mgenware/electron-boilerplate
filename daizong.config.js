@@ -52,10 +52,10 @@ module.exports = {
   },
   // Run build before this.
   dist: {
-    run: ['electron-builder --macos --windows'],
+    run: ['electron-builder'],
   },
   'build-dist': {
-    alias: 'bd',
+    alias: 'b-dist',
     run: ['#build', '#dist'],
   },
   terser: {
