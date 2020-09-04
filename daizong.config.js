@@ -37,7 +37,7 @@ module.exports = {
   },
   // Cleans, lints, compiles sources and runs tests.
   build: {
-    run: ['#prepare', '#compile', '#lint', '#t'],
+    run: ['#prepare', '#compile', '#lint', '#terser', '#t'],
     env: {
       NODE_ENV: 'production',
     },
@@ -57,5 +57,8 @@ module.exports = {
   'build-all': {
     alias: 'ba',
     run: ['#build', '#dist', '#pack'],
+  },
+  terser: {
+    run: ['node ./scripts/terser.js'],
   },
 };
