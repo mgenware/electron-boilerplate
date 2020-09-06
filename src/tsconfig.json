@@ -1,9 +1,0 @@
-{
-  "extends": "../tsconfig-main.json",
-  "compilerOptions": {
-    "outDir": "../ts_out",
-    "rootDir": ".",
-    "composite": true
-  },
-  "include": ["./main/**/*", "./common/**/*"]
-}

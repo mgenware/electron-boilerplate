@@ -1,7 +1,7 @@
 const mk = require('makhulu');
 const { minify } = require('terser');
 
-const srcDir = './ts_out/';
+const srcDir = './dist_app/';
 
 (async () => {
   // Select all .js files as initial data list.

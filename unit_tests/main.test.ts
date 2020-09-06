@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import add from '../ts_out/common/add';
+import add from '../dist_app/common/add';
 
 it('Add', () => {
   assert.equal(add(1, 2), 3);

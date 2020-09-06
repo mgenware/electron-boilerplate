@@ -1,4 +1,5 @@
 node_modules
 /dist
-/ts_out
-/ts_tests_out
+/dist_app
+/dist_ut
+/dist_it

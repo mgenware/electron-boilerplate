@@ -4,14 +4,15 @@ Fork of [electron-boilerplate](https://github.com/sindresorhus/electron-boilerpl
 
 - Rewritten in TypeScript
 - Bundles and compiles renderer process code with [rollup](https://github.com/rollup/rollup)
-- Compiles main process code and test project with TypeScript project references
 - Lints files with [eslint-typescript](https://github.com/typescript-eslint/typescript-eslint)
 - Uglifies JavaScript files in production mode via [terser](https://github.com/terser/terser)
 - Watches source files in dev mode and auto reloads electron
-- Added lit-element
+- Testing support
+  - Unit tests for main process
+  - Integration tests via [spectron](https://github.com/electron-userland/spectron)
 - Migrated `package.json` scripts to [daizong](https://github.com/mgenware/daizong)
 
-### Usage
+## Usage
 
 > This project uses [daizong](https://github.com/mgenware/daizong) to manage scripts. You need to run scripts through daizong via `yarn r <script>` or `npm run r <script>`.
 
@@ -27,21 +28,25 @@ Compile, lint files, run tests and uglify files in production mode (note that th
 yarn r build
 ```
 
-Run tests during development (when `yarn r dev` is running):
-
-```sh
-yarn r t
-```
-
-Lint project files:
-
-```sh
-yarn r lint
-```
-
 Build and run electron-builder `dist` script:
 
 ```sh
 yarn r build-dist
 # or yarn r b-dist
+```
+
+## Run tests
+
+Run unit tests:
+
+```sh
+yarn r unit-tests
+# or yarn r ut
+```
+
+Run spectron integration tests:
+
+```sh
+yarn r integration-tests
+# or yarn r it
 ```

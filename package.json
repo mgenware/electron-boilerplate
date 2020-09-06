@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": "github.com/mgenware/fx94",
   "author": "Mgen",
-  "main": "ts_out/main/main.js",
+  "main": "dist_app/main/main.js",
   "scripts": {
     "r": "daizong",
     "postinstall": "electron-builder install-app-deps"
@@ -44,6 +44,7 @@
     "rollup-plugin-terser": "^7.0.1",
     "rollup-plugin-typescript2": "^0.27.2",
     "source-map-support": "^0.5.19",
+    "spectron": "^11.1.0",
     "tslib": "^2.0.1",
     "typescript": "^4.0.2"
   },
@@ -51,7 +52,7 @@
     "appId": "com.company.AppName",
     "files": [
       "package.json",
-      "ts_out/**/*.js",
+      "dist_app/**/*.js",
       "template/**/*"
     ],
     "mac": {

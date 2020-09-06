@@ -1,4 +1,4 @@
-import { rendererFuncs } from 'common/ipcNames';
+import { rendererFuncs } from '../common/ipcNames';
 
 export default function handleDrop(element: HTMLElement) {
   // eslint-disable-next-line no-param-reassign

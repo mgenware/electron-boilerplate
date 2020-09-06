@@ -7,16 +7,20 @@ module.exports = {
       // Deletes compiled files, auto triggered by `yarn r dev` or `yarn r build`.
       clean: {
         run: {
-          del: ['ts_out', 'ts_tests_out', 'dist'],
+          del: ['dist', 'dist_app', 'dist_ut', 'dist_it'],
         },
       },
+      'prepare-build': {
+        run: ['git pull'],
+      },
       compile: {
-        run: ['tsc -b tests', 'rollup -c'],
+        run: ['tsc --incremental -p ./tsconfig-main.json', 'rollup -c'],
+        parallel: true,
       },
       runAndWatch: {
         run: [
-          'electron ./ts_out/main/main.js',
-          'tsc -b tests -w',
+          'electron ./dist_app/main/main.js',
+          'tsc --incremental -w -p ./tsconfig-main.json',
           'rollup -c -w',
         ],
         parallel: true,
@@ -30,14 +34,31 @@ module.exports = {
       NODE_ENV: 'development',
     },
   },
-  // Runs tests in development mode. You can keep two terminal tabs during development, one for `yarn dev`, the other for `yarn r t`.
-  t: {
-    run:
-      'mocha --exit --require source-map-support/register ts_tests_out/**/*.test.js',
+  'unit-tests': {
+    alias: 'ut',
+    run: [
+      'tsc -p ./unit_tests',
+      'mocha --exit --require source-map-support/register ./dist_ut/**/*.test.js',
+    ],
+  },
+  'integration-tests': {
+    alias: 'it',
+    run: [
+      'tsc -p ./integration_tests',
+      'mocha --exit --require source-map-support/register ./dist_it/**/*.test.js',
+    ],
   },
   // Cleans, lints, compiles sources and runs tests.
   build: {
-    run: ['#prepare', '#compile', '#lint', '#terser', '#t'],
+    run: [
+      '#prepare',
+      '#prepare-build',
+      '#compile',
+      '#lint',
+      '#terser',
+      '#ut',
+      '#it',
+    ],
     env: {
       NODE_ENV: 'production',
     },

@@ -25,7 +25,7 @@ if (isProd) {
 export default {
   input: ['src/renderer/renderer.ts'],
   output: {
-    dir: 'ts_out',
+    dir: 'dist_app',
     format: 'iife',
     sourcemap: true,
   },
