@@ -22,31 +22,8 @@ Start dev build, watch files and run electron:
 yarn r dev
 ```
 
-Compile, lint files, run tests and uglify files in production mode (note that this doesn't start any electron-builder work, it simply generates compiled JavaScript files to `ts_out` directory):
+Compile, lint files, uglify files, build app, build installer, and run both unit and integration tests in production mode:
 
 ```sh
 yarn r build
-```
-
-Build and run electron-builder `dist` script:
-
-```sh
-yarn r build-dist
-# or yarn r b-dist
-```
-
-## Run tests
-
-Run unit tests:
-
-```sh
-yarn r unit-tests
-# or yarn r ut
-```
-
-Run spectron integration tests:
-
-```sh
-yarn r integration-tests
-# or yarn r it
 ```

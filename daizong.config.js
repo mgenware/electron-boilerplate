@@ -66,6 +66,7 @@ module.exports = {
       '#lint',
       '#terser',
       '#ut',
+      '#dist',
       '#it',
     ],
     env: {
@@ -83,11 +84,6 @@ module.exports = {
   // Run build before this.
   dist: {
     run: ['electron-builder'],
-  },
-  // Build and run electron-builder `dist` script.
-  'build-dist': {
-    alias: 'b-dist',
-    run: ['#build', '#dist'],
   },
   terser: {
     run: ['node ./scripts/terser.js'],

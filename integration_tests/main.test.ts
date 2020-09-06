@@ -11,11 +11,14 @@ describe('Application launch', function () {
   this.timeout(10000);
 
   let appPath = '';
-  if (process.platform === 'win32') {
+  const { platform } = process;
+  if (platform === 'win32') {
     appPath = `./dist/win-unpacked/${pkg.productName}.exe`;
+  } else if (platform === 'darwin') {
+    appPath = `./dist/mac/${pkg.productName}.app/Contents/MacOS/${pkg.productName}`;
   }
   if (!appPath) {
-    throw new Error('Unexpected empty app path');
+    throw new Error(`Unexpected empty app path on platform ${platform}`);
   }
   if (!existsSync(appPath)) {
     throw new Error(
