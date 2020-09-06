@@ -4,12 +4,13 @@ module.exports = {
       prepare: {
         run: ['#clean'],
       },
-      // Deletes compiled files, auto triggered by `yarn r dev` or `yarn r build`.
+      // Delete compiled files, auto triggered by `yarn r dev` or `yarn r build`.
       clean: {
         run: {
           del: ['dist', 'dist_app', 'dist_ut', 'dist_it'],
         },
       },
+      // Extra preparation step for production build.
       'prepare-build': {
         run: ['git pull'],
       },
@@ -27,13 +28,14 @@ module.exports = {
       },
     },
   },
-  // Starts the development mode, which watches and compiles all source files including tests files.
+  // Compile and watch source files in development mode.
   dev: {
     run: ['#prepare', '#compile', '#runAndWatch'],
     env: {
       NODE_ENV: 'development',
     },
   },
+  // Run unit tests.
   'unit-tests': {
     alias: 'ut',
     run: [
@@ -41,6 +43,7 @@ module.exports = {
       'mocha --exit --require source-map-support/register ./dist_ut/**/*.test.js',
     ],
   },
+  // Run integration tests.
   'integration-tests': {
     alias: 'it',
     run: [
@@ -48,7 +51,7 @@ module.exports = {
       'mocha --exit --require source-map-support/register ./dist_it/**/*.test.js',
     ],
   },
-  // Cleans, lints, compiles sources and runs tests.
+  // Clean, lint, compile source files and run tests.
   build: {
     run: [
       '#prepare',
@@ -75,6 +78,7 @@ module.exports = {
   dist: {
     run: ['electron-builder'],
   },
+  // Build and run electron-builder `dist` script.
   'build-dist': {
     alias: 'b-dist',
     run: ['#build', '#dist'],
