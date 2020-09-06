@@ -1,21 +1,5 @@
 {
-  "compilerOptions": {
-    "removeComments": true,
-    "preserveConstEnums": true,
-    "sourceMap": true,
-    "declaration": false,
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "target": "ES6",
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "resolveJsonModule": true,
-    "baseUrl": "src",
-    "newLine": "lf"
-  },
-  "include": ["src/**/*", "tests/**/*"],
+  "extends": "./tsconfig-base.json",
+  "include": ["src/**/*", "unit_tests/**/*", "integration_tests/**/*"],
   "exclude": ["node_modules"]
 }
