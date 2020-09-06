@@ -66,9 +66,9 @@ module.exports = {
       NODE_ENV: 'production',
     },
   },
-  // Lints the project using ESLint, auto triggered by `yarn r build`.
+  // Lint the project using ESLint, auto triggered by `yarn r build`.
   lint: {
-    run: 'eslint --max-warnings 0 --ext .ts src',
+    run: 'eslint --max-warnings 0 --ext .ts src unit_tests integration_tests',
   },
   // Run build before this.
   pack: {

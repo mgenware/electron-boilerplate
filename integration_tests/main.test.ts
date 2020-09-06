@@ -1,8 +1,9 @@
+/* eslint-disable func-names */
 import * as assert from 'assert';
 import * as nodepath from 'path';
 import { Application } from 'spectron';
 
-var electronPath = nodepath.join(
+let electronPath = nodepath.join(
   __dirname,
   '..',
   'node_modules',
@@ -13,22 +14,22 @@ if (process.platform === 'win32') {
   electronPath += '.cmd';
 }
 
-var appPath = nodepath.join(__dirname, '../dist_app/main/main.js');
+const appPath = nodepath.join(__dirname, '../dist_app/main/main.js');
 
 describe('Application launch', function () {
   this.timeout(10000);
 
-  beforeEach(function () {
+  beforeEach(async function () {
     this.app = new Application({
       path: electronPath,
       args: [appPath],
     });
-    return this.app.start();
+    await this.app.start();
   });
 
-  afterEach(function () {
+  afterEach(async function () {
     if (this.app && this.app.isRunning()) {
-      return this.app.stop();
+      await this.app.stop();
     }
   });
 
