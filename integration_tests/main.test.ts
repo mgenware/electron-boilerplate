@@ -1,40 +1,51 @@
 /* eslint-disable func-names */
 import * as assert from 'assert';
-import * as nodepath from 'path';
 import { Application } from 'spectron';
+import { existsSync } from 'fs';
 
-let electronPath = nodepath.join(
-  __dirname,
-  '..',
-  'node_modules',
-  '.bin',
-  'electron',
-);
-if (process.platform === 'win32') {
-  electronPath += '.cmd';
-}
-
-const appPath = nodepath.join(__dirname, '../dist_app/main/main.js');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const pkg = require('../package.json');
 
 describe('Application launch', function () {
+  // Set 10 secs as timeout.
   this.timeout(10000);
+
+  let appPath = '';
+  if (process.platform === 'win32') {
+    appPath = `./dist/win-unpacked/${pkg.productName}.exe`;
+  }
+  if (!appPath) {
+    throw new Error('Unexpected empty app path');
+  }
+  if (!existsSync(appPath)) {
+    throw new Error(
+      `App file "${appPath}" not found, please build the project before running tests`,
+    );
+  }
 
   beforeEach(async function () {
     this.app = new Application({
-      path: electronPath,
-      args: [appPath],
+      path: appPath,
     });
     await this.app.start();
   });
 
   afterEach(async function () {
-    if (this.app && this.app.isRunning()) {
-      await this.app.stop();
+    const app = this.app as Application;
+    if (app && app.isRunning()) {
+      await app.stop();
     }
   });
 
   it('Window count', async function () {
-    const count = await this.app.client.getWindowCount();
+    const app = this.app as Application;
+    const count = await app.client.getWindowCount();
     assert.ok(count >= 1);
+  });
+
+  it('Main view', async function () {
+    const app = this.app as Application;
+    const element = await app.client.$('hello-view');
+    assert.ok(await element.isDisplayed());
   });
 });

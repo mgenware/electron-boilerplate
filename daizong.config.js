@@ -40,16 +40,22 @@ module.exports = {
     alias: 'ut',
     run: [
       'tsc -p ./unit_tests',
-      'mocha --exit --require source-map-support/register ./dist_ut/**/*.test.js',
+      'mocha --parallel --exit --require source-map-support/register ./dist_ut/**/*.test.js',
     ],
+    env: {
+      NODE_ENV: 'production',
+    },
   },
   // Run integration tests.
   'integration-tests': {
     alias: 'it',
     run: [
       'tsc -p ./integration_tests',
-      'mocha --exit --require source-map-support/register ./dist_it/**/*.test.js',
+      'mocha --parallel --exit --require source-map-support/register ./dist_it/**/*.test.js',
     ],
+    env: {
+      NODE_ENV: 'production',
+    },
   },
   // Clean, lint, compile source files and run tests.
   build: {
