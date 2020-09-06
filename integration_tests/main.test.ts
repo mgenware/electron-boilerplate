@@ -43,7 +43,7 @@ describe('Application launch', function () {
   it('Window count', async function () {
     const app = this.app as Application;
     const count = await app.client.getWindowCount();
-    assert.ok(count >= 1);
+    assert.equal(count, 1);
   });
 
   it('Main view', async function () {
