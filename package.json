@@ -58,6 +58,10 @@
     "mac": {
       "darkModeSupport": true
     },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
     "dmg": {
       "iconSize": 160,
       "contents": [
