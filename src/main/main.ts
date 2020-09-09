@@ -3,6 +3,7 @@ import { is } from 'electron-util';
 import unhandled from 'electron-unhandled';
 import debug from 'electron-debug';
 import contextMenu from 'electron-context-menu';
+import { autoUpdater } from 'electron-updater';
 import { join } from 'path';
 import menu from './menu';
 import init from './init';
@@ -10,6 +11,19 @@ import init from './init';
 unhandled();
 debug();
 contextMenu();
+
+// Checks if the given error is a network error.
+// https://github.com/electron-userland/electron-builder/issues/2398#issuecomment-413117520
+function isNetworkError(errorObject: Error): boolean {
+  return (
+    errorObject.message === 'net::ERR_INTERNET_DISCONNECTED' ||
+    errorObject.message === 'net::ERR_PROXY_CONNECTION_FAILED' ||
+    errorObject.message === 'net::ERR_CONNECTION_RESET' ||
+    errorObject.message === 'net::ERR_CONNECTION_CLOSE' ||
+    errorObject.message === 'net::ERR_NAME_NOT_RESOLVED' ||
+    errorObject.message === 'net::ERR_CONNECTION_TIMED_OUT'
+  );
+}
 
 try {
   // eslint-disable-next-line @typescript-eslint/no-var-requires, global-require, import/no-extraneous-dependencies
@@ -20,16 +34,20 @@ try {
 // Note: Must match `build.appId` in package.json
 app.setAppUserModelId('com.company.AppName');
 
-// Uncomment this before publishing your first version.
-// It's commented out as it throws an error if there are no published versions.
-// if (!is.development) {
-//   const FOUR_HOURS = 1000 * 60 * 60 * 4;
-//   setInterval(() => {
-//     autoUpdater.checkForUpdates();
-//   }, FOUR_HOURS);
-
-//   autoUpdater.checkForUpdates();
-// }
+if (!is.development) {
+  try {
+    const FOUR_HOURS = 1000 * 60 * 60 * 4;
+    setInterval(() => {
+      autoUpdater.checkForUpdates();
+    }, FOUR_HOURS);
+    autoUpdater.checkForUpdates();
+  } catch (err) {
+    // Ignore network errors.
+    if (!isNetworkError(err)) {
+      throw err;
+    }
+  }
+}
 
 // Prevent window from being garbage collected
 let mainWindow: BrowserWindow | null = null;
