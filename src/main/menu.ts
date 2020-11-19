@@ -8,7 +8,6 @@ import {
   openNewGitHubIssue,
   debugInfo,
 } from 'electron-util';
-import config from './config';
 
 const showPreferences = () => {
   // Show the app's preferences here
@@ -57,12 +56,6 @@ if (!is.macos) {
 
 const debugSubmenu = [
   {
-    label: 'Show Settings',
-    click() {
-      config.openInEditor();
-    },
-  },
-  {
     label: 'Show App Data',
     click() {
       shell.openPath(app.getPath('userData'));
@@ -70,14 +63,6 @@ const debugSubmenu = [
   },
   {
     type: 'separator',
-  },
-  {
-    label: 'Delete Settings',
-    click() {
-      config.clear();
-      app.relaunch();
-      app.quit();
-    },
   },
   {
     label: 'Delete App Data',
