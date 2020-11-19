@@ -1,2 +1,3 @@
-window.ipcRenderer = require('electron-better-ipc').ipcRenderer;
-window.electronShell = require('electron').shell;
+const electron = require('electron');
+window.electronShell = electron.shell;
+window.ipcRenderer = electron.ipcRenderer;

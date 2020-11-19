@@ -1,4 +1,4 @@
-import { rendererFuncs } from '../common/ipcNames';
+import calls from '../common/calls';
 
 export default function handleDrop(element: HTMLElement) {
   // eslint-disable-next-line no-param-reassign
@@ -17,7 +17,7 @@ export default function handleDrop(element: HTMLElement) {
           const file = ev.dataTransfer.items[i].getAsFile()?.path;
           if (file) {
             // eslint-disable-next-line no-await-in-loop
-            await window.ipcRenderer.callMain(rendererFuncs.fileDrop, file);
+            window.ipcRenderer.send(calls.main.openFile, file);
             return;
           }
         }

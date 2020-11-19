@@ -1,10 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { RendererProcessIpc } from 'electron-better-ipc';
 import * as electron from 'electron';
 
 declare global {
   interface Window {
-    ipcRenderer: RendererProcessIpc;
+    ipcRenderer: electron.IpcRenderer;
     electronShell: electron.Shell;
   }
 }
