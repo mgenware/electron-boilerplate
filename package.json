@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": "github.com/mgenware/fx94",
   "author": "Mgen",
-  "main": "dist_app/main/main.js",
+  "main": "dist_app/main.js",
   "scripts": {
     "r": "daizong",
     "postinstall": "electron-builder install-app-deps"

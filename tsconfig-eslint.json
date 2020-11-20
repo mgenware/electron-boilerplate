@@ -2,7 +2,6 @@
   "extends": "./tsconfig-base.json",
   "include": [
     "src/**/*",
-    "unit_tests/**/*",
     "integration_tests/**/*",
     "template/**/*"
   ],

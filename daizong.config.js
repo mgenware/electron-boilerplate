@@ -30,17 +30,6 @@ module.exports = {
       NODE_ENV: 'development',
     },
   },
-  // Run unit tests.
-  'unit-tests': {
-    alias: 'ut',
-    run: [
-      'tsc -p ./unit_tests',
-      'mocha --parallel --exit --require source-map-support/register ./dist_ut/**/*.test.js',
-    ],
-    env: {
-      NODE_ENV: 'production',
-    },
-  },
   // Run integration tests.
   'integration-tests': {
     alias: 'it',
@@ -60,7 +49,6 @@ module.exports = {
       '#compile',
       '#lint',
       '#terser',
-      '#ut',
       '#dist',
       '#it',
     ],
@@ -70,7 +58,7 @@ module.exports = {
   },
   // Lint the project using ESLint, auto triggered by `yarn r build`.
   lint: {
-    run: 'eslint --max-warnings 0 --ext .ts src unit_tests integration_tests',
+    run: 'eslint --max-warnings 0 --ext .ts src integration_tests',
   },
   // Run build before this.
   pack: {

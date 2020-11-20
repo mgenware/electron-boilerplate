@@ -5,7 +5,7 @@
     "preserveConstEnums": true,
     "sourceMap": true,
     "target": "ES2018",
-    "declaration": false,
+    "declaration": true,
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
