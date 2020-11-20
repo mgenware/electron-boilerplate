@@ -15,15 +15,10 @@ module.exports = {
         run: ['git pull'],
       },
       compile: {
-        run: ['tsc --incremental -p ./tsconfig-main.json', 'rollup -c'],
-        parallel: true,
+        run: ['rollup -c'],
       },
       runAndWatch: {
-        run: [
-          'electron ./dist_app/main/main.js',
-          'tsc --incremental -w -p ./tsconfig-main.json',
-          'rollup -c -w',
-        ],
+        run: ['electron ./dist_app/main.js', 'rollup -c -w'],
         parallel: true,
       },
     },

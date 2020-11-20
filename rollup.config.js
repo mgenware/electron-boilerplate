@@ -7,7 +7,7 @@ import litcss from 'rollup-plugin-lit-css-ex';
 
 const isProd = process.env.NODE_ENV == 'production';
 
-const plugins = [
+const rendererPlugins = [
   nodeResolve({
     browser: true,
     extensions: ['.js', '.json', '.css'],
@@ -18,16 +18,29 @@ const plugins = [
   litcss(),
 ];
 
+const mainPlugins = [json(), typescript({ tsconfig: './tsconfig-main.json' })];
+
 if (isProd) {
-  plugins.push(terser());
+  mainPlugins.push(terser());
 }
 
-export default {
-  input: ['src/renderer/renderer.ts'],
-  output: {
-    dir: 'dist_app',
-    format: 'iife',
-    sourcemap: true,
+export default [
+  {
+    input: ['src/renderer/renderer.ts'],
+    output: {
+      dir: 'dist_app',
+      format: 'iife',
+      sourcemap: true,
+    },
+    plugins: rendererPlugins,
   },
-  plugins,
-};
+  {
+    input: ['src/main/main.ts'],
+    output: {
+      dir: 'dist_app',
+      format: 'cjs',
+      sourcemap: true,
+    },
+    plugins: mainPlugins,
+  },
+];

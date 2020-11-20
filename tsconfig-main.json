@@ -1,6 +1,9 @@
 {
   "extends": "./tsconfig-base.json",
   "compilerOptions": {
+    "target": "ES6",
+    "module": "ESNext",
+    "moduleResolution": "node",
     "outDir": "./dist_app"
   },
   "include": ["./src/main/**/*", "./src/common/**/*"]
