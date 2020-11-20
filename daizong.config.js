@@ -21,6 +21,24 @@ module.exports = {
         run: ['electron ./dist_app/main.js', 'rollup -c -w'],
         parallel: true,
       },
+      // Run build before this.
+      pack: {
+        run: ['electron-builder --dir'],
+      },
+      terser: {
+        run: ['node ./scripts/terser.js'],
+      },
+      // Lint the project using ESLint, auto triggered by `yarn r build`.
+      lint: {
+        run: 'eslint --max-warnings 0 --ext .ts src integration_tests',
+      },
+      // Run build before this.
+      'dist-mac': {
+        run: ['electron-builder --macos'],
+      },
+      'dist-win': {
+        run: ['electron-builder --windows'],
+      },
     },
   },
   // Compile and watch source files in development mode.
@@ -43,32 +61,30 @@ module.exports = {
   },
   // Clean, lint, compile source files and run tests.
   build: {
-    run: [
-      '#prepare',
-      '#prepare-build',
-      '#compile',
-      '#lint',
-      '#terser',
-      '#dist',
-      '#it',
-    ],
+    run: ['#prepare', '#prepare-build', '#compile', '#lint', '#terser'],
     env: {
       NODE_ENV: 'production',
     },
   },
-  // Lint the project using ESLint, auto triggered by `yarn r build`.
-  lint: {
-    run: 'eslint --max-warnings 0 --ext .ts src integration_tests',
+  'build-dist-mac': {
+    alias: 'b-mac',
+    run: ['#build', '#dist-mac', '#it'],
+    env: {
+      NODE_ENV: 'production',
+    },
   },
-  // Run build before this.
-  pack: {
-    run: ['electron-builder --dir'],
+  'build-dist-win': {
+    alias: 'b-win',
+    run: ['#build', '#dist-win', '#it'],
+    env: {
+      NODE_ENV: 'production',
+    },
   },
-  // Run build before this.
-  dist: {
-    run: ['electron-builder'],
-  },
-  terser: {
-    run: ['node ./scripts/terser.js'],
+  'build-pack': {
+    alias: 'b-pack',
+    run: ['#build', '#pack'],
+    env: {
+      NODE_ENV: 'production',
+    },
   },
 };
