@@ -1,16 +1,14 @@
-import { app, BrowserWindow, Menu } from 'electron';
-import { is } from 'electron-util';
+import { app, BrowserWindow } from 'electron';
 import unhandled from 'electron-unhandled';
 import debug from 'electron-debug';
-import contextMenu from 'electron-context-menu';
 import { autoUpdater } from 'electron-updater';
 import { join } from 'path';
-import menu from './menu';
+import isDev from 'electron-is-dev';
 import init from './init';
 
+const isMac = process.platform === 'darwin';
 unhandled();
 debug();
-contextMenu();
 
 // Checks if the given error is a network error.
 // https://github.com/electron-userland/electron-builder/issues/2398#issuecomment-413117520
@@ -34,7 +32,7 @@ try {
 // Note: Must match `build.appId` in package.json
 app.setAppUserModelId('com.company.AppName');
 
-if (!is.development) {
+if (!isDev) {
   try {
     const FOUR_HOURS = 1000 * 60 * 60 * 4;
     setInterval(() => {
@@ -51,7 +49,7 @@ if (!is.development) {
 
 // Prevent window from being garbage collected
 let mainWindow: BrowserWindow | null = null;
-const rootDir = join(__dirname, '../../');
+const rootDir = join(__dirname, '../');
 
 const createMainWindow = async () => {
   const win = new BrowserWindow({
@@ -61,7 +59,6 @@ const createMainWindow = async () => {
     height: 400,
     webPreferences: {
       preload: join(rootDir, 'template/preload.js'),
-      enableRemoteModule: true,
     },
   });
 
@@ -95,7 +92,7 @@ app.on('second-instance', () => {
 });
 
 app.on('window-all-closed', () => {
-  if (!is.macos) {
+  if (!isMac) {
     app.quit();
   }
 });
@@ -108,7 +105,6 @@ app.on('activate', async () => {
 
 (async () => {
   await app.whenReady();
-  Menu.setApplicationMenu(menu);
   mainWindow = await createMainWindow();
 
   init();
