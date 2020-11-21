@@ -4,6 +4,7 @@ import json from '@rollup/plugin-json';
 import typescript from 'rollup-plugin-typescript2';
 import { terser } from 'rollup-plugin-terser';
 import litcss from 'rollup-plugin-lit-css-ex';
+import autoExternal from 'rollup-plugin-auto-external';
 
 const isProd = process.env.NODE_ENV == 'production';
 
@@ -18,7 +19,11 @@ const rendererPlugins = [
   litcss(),
 ];
 
-const mainPlugins = [json(), typescript({ tsconfig: './tsconfig-main.json' })];
+const mainPlugins = [
+  json(),
+  typescript({ tsconfig: './tsconfig-main.json' }),
+  autoExternal(),
+];
 
 if (isProd) {
   mainPlugins.push(terser());

@@ -22,8 +22,12 @@ Start dev build, watch files and run electron:
 yarn r dev
 ```
 
-Compile, lint files, uglify files, build app, build installer, and run both unit and integration tests in production mode:
+Compile, lint files, uglify files, build app, build installer, and run integration tests in production mode:
 
 ```sh
-yarn r build
+# Start build process for Windows
+yarn r b-win
+
+# Start build process for macOS
+yarn r b-mac
 ```
