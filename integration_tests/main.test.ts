@@ -35,6 +35,7 @@ describe('Application launch', function () {
 
   afterEach(async function () {
     const app = this.app as Application;
+    // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
     if (app && app.isRunning()) {
       await app.stop();
     }

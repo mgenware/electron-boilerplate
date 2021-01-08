@@ -34,6 +34,7 @@
     "electron-reloader": "^1.1.0",
     "eslint": "^7.17.0",
     "eslint-config-airbnb-typescript-lite": "^12.0.0",
+    "eslint-config-mgenware": "^0.0.5",
     "eslint-plugin-import": "^2.22.1",
     "makhulu": "^1.4.0",
     "mocha": "^8.2.1",

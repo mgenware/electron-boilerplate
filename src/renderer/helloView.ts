@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 import { html, customElement, css, LitElement } from 'lit-element';
 
 @customElement('hello-view')

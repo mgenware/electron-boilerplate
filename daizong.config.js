@@ -28,10 +28,6 @@ module.exports = {
       terser: {
         run: ['node ./scripts/terser.js'],
       },
-      // Lint the project using ESLint, auto triggered by `yarn r build`.
-      lint: {
-        run: 'eslint --max-warnings 0 --ext .ts src integration_tests',
-      },
       // Run build before this.
       'dist-mac': {
         run: ['electron-builder --macos'],
@@ -47,6 +43,10 @@ module.exports = {
     env: {
       NODE_ENV: 'development',
     },
+  },
+  // Lint the project using ESLint, auto triggered by `yarn r build`.
+  lint: {
+    run: 'eslint --max-warnings 0 --ext .ts src integration_tests',
   },
   // Run integration tests.
   'integration-tests': {

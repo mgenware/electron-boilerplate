@@ -24,6 +24,7 @@ function isNetworkError(errorObject: Error): boolean {
 }
 
 try {
+  // eslint-disable-next-line max-len
   // eslint-disable-next-line @typescript-eslint/no-var-requires, global-require, import/no-extraneous-dependencies
   require('electron-reloader')(module);
   // eslint-disable-next-line no-empty

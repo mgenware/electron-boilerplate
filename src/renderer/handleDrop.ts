@@ -9,7 +9,7 @@ export default function handleDrop(element: HTMLElement) {
       return;
     }
 
-    if (ev.dataTransfer.items) {
+    if (ev.dataTransfer.items.length) {
       // Use DataTransferItemList interface to access the file(s).
       for (let i = 0; i < ev.dataTransfer.items.length; i++) {
         // If dropped items aren't files, reject them.
